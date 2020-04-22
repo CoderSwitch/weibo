@@ -9,6 +9,8 @@ use App\Http\Requests\Api\VerificationCodeRequest;
 
 class VerificationCodesController extends Controller
 {
+
+
     public function store(VerificationCodeRequest $request, EasySms $easySms)
     {
         $phone = $request->phone;
