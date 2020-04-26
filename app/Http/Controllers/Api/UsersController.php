@@ -32,7 +32,7 @@ class UsersController extends Controller
         // 清除验证码缓存
         \Cache::forget($request->verification_key);
 
-        return new UserResource($user);
+        return (new UserResource($user))->showSensitiveFields();
     }
 
     public function show(User $user, Request $request)
@@ -42,6 +42,6 @@ class UsersController extends Controller
 
     public function me(Request $request)
     {
-        return new UserResource($request->user());
+        return (new UserResource($request->user()))->showSensitiveFields();
     }
 }
