@@ -29,4 +29,21 @@ class TopicsController extends Controller
         $topic->update($request->all());
         return new TopicResource($topic);
     }
+
+    /*
+     * 删除舞种接口
+     * ***/
+    public function deletetopic(Request $request)
+    {
+
+        $topicId = $request['id'];
+
+        $topic = Topic::where('id', $topicId)->first();
+        if (!$topic){
+            return response(null,99);
+        }
+        $this->authorize('destroy', $topic);
+        $topic->delete();
+        return response(null, 204);
+    }
 }
