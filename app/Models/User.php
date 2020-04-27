@@ -131,4 +131,9 @@ $this->followings()->get()
     {
         return [];
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }
