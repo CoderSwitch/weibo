@@ -81,8 +81,11 @@ Route::prefix('v1')
 
                     // 发布话题
                     Route::resource('topics', 'TopicsController')->only([
-                        'store', 'update', 'destroy'
+                        'store', 'destroy'
                     ]);
+
+                    Route::post('update1', 'TopicsController@update1')
+                        ->name('topics.update1');
                 });
 
             });

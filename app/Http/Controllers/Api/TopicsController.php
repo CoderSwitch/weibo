@@ -17,4 +17,16 @@ class TopicsController extends Controller
 
         return new TopicResource($topic);
     }
+
+    public function update1(TopicRequest $request)
+    {
+
+        $topicId =  $request['id'];
+        $topic = Topic::where('id', $topicId)->first();
+        $this->authorize('update', $topic);
+
+
+        $topic->update($request->all());
+        return new TopicResource($topic);
+    }
 }
